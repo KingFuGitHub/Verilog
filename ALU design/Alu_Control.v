@@ -1,12 +1,19 @@
 
-
+// a function that takes in 2 inputs and has 1 output.
 module Alu_Control(opcode, func_field, alu_control);
 	 
+// inputs size of 6 bits
 input [5:0] opcode;
 input [5:0] func_field;
+
+// output size of 3 bits
 output reg [2:0] alu_control;
+
+// variable with size of 3
 reg [2:0] func_code;
 
+
+// executed always block whenever input or output variables change.
 always @ (*)
 begin
 	case (func_field)
