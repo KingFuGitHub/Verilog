@@ -3,35 +3,56 @@
 
 module TrafficLite_tb;
 
+// variables
 reg EWCar;
 reg NSCar;
-reg Clock;
 
+/*
+could represent physical wires, must be continuously driven
+by something, and cannot store a value. Hence, they are assigned values
+using continous assignment statements.
+*/
 wire EWLite;
 wire NSLite;
 
+// The TrafficLite function
 TrafficLite uut(
     EWCar,
     NSCar,
     EWLite,
-    NSLite,
-    Clock
+    NSLite
 );
 
     initial begin
         $dumpfile("TrafficLite_tb.vcd");
         $dumpvars(0, TrafficLite_tb);
 
-        EWCar = 0;
-        #30;
+        EWCar = 0; NSCar = 1;
+        #10;
 
-        NSCar = 1;
-        #30;
+        NSCar = 0; EWCar = 1;
+        #10;
 
-        EWCar = 1;
-        #30;
+        EWCar = 0; NSCar = 1;
+        #10;
 
-        NSCar = 0;
-        #30;
+        NSCar = 0; EWCar = 1;
+        #10;
+
+
+
+        EWCar = 0; NSCar = 1;
+        #10;
+
+        NSCar = 0; EWCar = 1;
+        #10;
+
+        EWCar = 0; NSCar = 1;
+        #10;
+
+        NSCar = 0; EWCar = 1;
+        #10;
+
+
     end
 endmodule
